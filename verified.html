@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Verification In Process</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+    }
+    .header {
+      background-color: #0e121b;
+      text-align: left;
+      padding: 15px 20px;
+    }
+    .header img {
+      max-height: 40px;
+      display: block;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    .centered {
+  text-align: center;
+}
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Account Verification In Process Box */
+    .verification-box {
+      background: linear-gradient(135deg, #f7fafc, #ffffff);
+      border: 1px solid #dce5f6;
+      border-radius: 10px;
+      padding: 25px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin: 25px 0;
+    }
+    .verification-box h3 {
+      font-size: 20px;
+      color: #0e121b;
+      text-align: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #dcdcdc;
+      padding-bottom: 10px;
+      
+      
+    }
+    .verification-box img {
+      width: 100%;
+      max-width: 120px;
+      display: block;
+      margin: 20px auto;
+      margin-top: 50px;
+      margin-bottom: 50px;
+
+    }
+
+     .button {
+      display: inline-block;
+      background-color: #49a5f2;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .footer {
+      background-color: #0e121b;
+      color: #ffffff;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #49a5f2;
+      margin: 0 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .subscribe {
+      background-color: #49a5f2;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .subscribe a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .container {
+        padding: 20px 15px;
+      }
+      h2 {
+        font-size: 20px;
+        
+      }
+      p {
+        font-size: 15px;
+      }
+      .footer, .subscribe {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://cryptoriq.com/1/logo.png" alt="CryptoRiq Logo" />
+  </div>
+
+  <div class="container">
+    <h2>Hi '.$fullname.',</h2>
+    <p>Verification Commpleted – Your account is now active!</p>
+
+    <!-- Account Verification In Process Box -->
+    <div class="verification-box">
+      <h3>Account Verified</h3>
+      <img src="https://cryptoriq.com/1/verify.png" alt="In Process" />
+      <p class="centered">Your account has been successfully verified and your account is now fully activated on <strong>'.$site_name.'</strong>.</p>
+
+
+    
+
+       </div>
+
+    <p>You can now log in and start using all features of our platform.</p>
+
+    <a href="'.$login_url.'" class="button">Log in to your account</a>
+
+    <p>Thanks for your patience and for choosing <strong>'.$site_name.'</strong>!<br>– The '.$site_name.' Team 🚀</p>
+  </div>
+
+  <div class="footer">
+    Follow us on
+    <a href="#">Twitter</a> and
+    <a href="#">LinkedIn</a>
+  </div>
+
+  <div class="subscribe">
+    💌 <a href="#">Subscribe to the '.$site_name.' newsletter</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Kristen Kyong Lee, MD | Vitals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabName + '-tab').classList.add('active');
+      document.getElementById(tabName + '-btn').classList.add('active');
+    }
+    
+    function switchToReviewsTab() {
+      // Switch to reviews tab
+      switchTab('reviews');
+      
+      // Smooth scroll to the tabs section
+      document.querySelector('.tabs').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    
+    function toggleSearch() {
+      const searchBar = document.querySelector('.search-bar');
+      const mobileIcons = document.querySelector('.mobile-header-icons');
+      const closeIcon = document.querySelector('.close-icon');
+      
+      if (searchBar.classList.contains('visible')) {
+        // Hide search, show mobile icons
+        searchBar.classList.remove('visible');
+        mobileIcons.classList.remove('hidden');
+        closeIcon.classList.remove('visible');
+      } else {
+        // Show search, hide mobile icons
+        searchBar.classList.add('visible');
+        mobileIcons.classList.add('hidden');
+        closeIcon.classList.add('visible');
+      }
+    }
+    
+    function closeSearch() {
+      const searchBar = document.querySelector('.search-bar');
+      const mobileIcons = document.querySelector('.mobile-header-icons');
+      const closeIcon = document.querySelector('.close-icon');
+      
+      searchBar.classList.remove('visible');
+      mobileIcons.classList.remove('hidden');
+      closeIcon.classList.remove('visible');
+    }
+    
+    function toggleMenu() {
+      // Placeholder for hamburger menu functionality
+      alert('Menu functionality would be implemented here');
+    }
+    
+    window.onload = () => switchTab('about');
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('review-modal');
+    const openBtn = document.getElementById('toggle-review-form');
+    const closeBtn = document.getElementById('close-review-modal');
+
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('show');
+    });
+
+    document.getElementById('review-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const rating = document.getElementById('rating').value;
+      const comment = document.getElementById('comment').value.trim();
+      const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      const avatarURL = `https://randomuser.me/api/portraits/${Math.random() > 0.5 ? 'women' : 'men'}/${Math.floor(Math.random() * 90)}.jpg`;
+
+      const newReview = document.createElement('div');
+      newReview.className = 'review-item';
+      newReview.innerHTML = `
+        <img src="${avatarURL}" class="review-avatar" alt="${name}" />
+        <div class="review-content">
+          <p><strong>${rating}</strong> "${comment}"</p>
+          <small>- ${name} • ${today}</small>
+        </div>
+      `;
+
+      document.getElementById('review-list').prepend(newReview);
+      this.reset();
+      modal.classList.remove('show');
+    });
+  });
+</script>
+
+
+
+
+</head>
+<body>
+  <!-- Government Banner -->
+  <div class="gov-banner">
+    <div class="container">
+      <div class="gov-banner-content">
+        <div class="us-flag"></div>
+        <div class="gov-banner-text">
+          An official website of Doctor Kristen
+          <a href="#" class="gov-banner-link">Here's how you know</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="header-top">
+          <div class="logo">vitals</div>
+          
+          <!-- Mobile header icons -->
+          <div class="mobile-header-icons">
+            <button class="icon-button" onclick="toggleSearch()" aria-label="Search">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+            <button class="icon-button" onclick="toggleMenu()" aria-label="Menu">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Close icon - only visible when search is open -->
+          <button class="icon-button close-icon" onclick="closeSearch()" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Search bar - hidden by default on mobile -->
+        <div class="search-bar">
+          <input type="text" placeholder="Specialty, condition, or procedure" />
+          <input type="text" placeholder="New York, NY" />
+          <button>Search</button>
+        </div>
+        
+        <!-- Navigation links - hidden on mobile -->
+        <div class="nav-links">
+          <span>LIST YOUR PRACTICE</span>
+          <span>BROWSE</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="main-container">
+    <div class="container main-inner">
+      <div class="profile-pic">
+<img src="https://cryptoriq.com/1/dr.jpg" alt="Dr. Kristen Lee" />
+      </div>
+      <div class="doctor-info">
+        <h1>
+          Dr. Kristen Kyong Lee, MD
+          <svg class="verification-badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00bfff"><path d="M12 0l3.09 6.26L22 7.27l-5 4.87 1.18 6.88L12 15.77l-6.18 3.25L7 12.14 2 7.27l6.91-1.01L12 0z"/></svg>
+        </h1>
+        <div class="specialty">Gastroenterology</div>
+        <p><a href="https://www.drkristen.com" class="website-link" target="_blank">www.drkristen.com</a></p>
+        
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="reviews-section">
+        <div class="review-content">
+          <div class="reviews-inner">
+            <div class="rating-summary">
+              <div class="rating-number">4.33</div>
+              <div class="stars">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star half">☆</span>
+              </div>
+            </div>
+            <div class="review-text-content">
+              <div class="review-text">
+                "Great experience. Not only listened to concerns but took the lead with my treatment. Will be back in 30 for a follow up. Finding comfort with an uncomfortable situation"
+              </div>
+              <div class="review-meta">
+                <span>Jonuel H. • February 5, 2025</span>
+                <span class="view-all-reviews" onclick="switchToReviewsTab()">See all 272 reviews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tabs">
+    <div class="container tabs-inner">
+      <button id="about-btn" class="tab-button" onclick="switchTab('about')">About</button>
+      <button id="credentials-btn" class="tab-button" onclick="switchTab('credentials')">Credentials</button>
+      <button id="location-btn" class="tab-button" onclick="switchTab('location')">Location</button>
+      <button id="reviews-btn" class="tab-button" onclick="switchTab('reviews')">Reviews</button>
+    </div>
+  </section>
+
+  <section class="tab-content active" id="about-tab">
+    <div class="container">
+      <p><strong>Dr. Kristen Lee</strong> is a double board certified, IVY league-trained gastroenterologist with a special interest in:</p>
+      <ul>
+        <li><strong>Women's Health</strong></li>
+        <li><strong>Colon cancer screening</strong></li>
+        <li><strong>Inflammatory bowel disease (Crohn's disease/ulcerative colitis)</strong></li>
+        <li><strong>IBS (irritable bowel syndrome)</strong></li>
+        <li><strong>Hemorrhoid treatment</strong></li>
+      </ul>
+      <p>
+        If you're looking for a top <strong>female gastroenterologist</strong> near you in Midtown or on the Upper East Side who specializes in Women's health, enjoys her work, and values her patients' relationships, look no further. Call Dr. Lee to make an appointment today!
+      </p>
+      <p>
+        Dr. Lee graduated from Johns Hopkins University where she received her Bachelor of Science degree in Biomedical Engineering with honors. She then attended Weill Cornell Medical College where she received her medical degree with academic distinction. Dr. Lee went on to complete her post-graduate training at Mount Sinai Medical Center including her residency in internal medicine and fellowship in gastroenterology. As part of her fellowship, she also pursued advanced training in women's health gastroenterology.
+      </p>
+      <span class="read-more">Read More</span>
+    </div>
+  </section>
+
+  <section class="tab-content" id="credentials-tab">
+    <div class="container">
+      <h3>Education & Training</h3>
+      <p><strong>Medical School:</strong> Weill Cornell Medical College</p>
+      <p><strong>Residency:</strong> Internal Medicine, Mount Sinai Medical Center</p>
+      <p><strong>Fellowship:</strong> Gastroenterology, Mount Sinai Medical Center</p>
+      <p><strong>Undergraduate:</strong> Johns Hopkins University - Biomedical Engineering</p>
+      
+      <h3>Board Certifications</h3>
+      <p>• American Board of Internal Medicine</p>
+      <p>• American Board of Gastroenterology</p>
+      
+      <h3>Hospital Affiliations</h3>
+      <p>• Mount Sinai Hospital</p>
+      <p>• NewYork-Presbyterian Hospital</p>
+    </div>
+  </section>
+
+  <section class="tab-content" id="location-tab">
+    <div class="container">
+      <h3>Practice Location</h3>
+      <p><strong>Address:</strong><br>
+      123 Medical Plaza<br>
+      New York, NY 10011</p>
+      
+      <p><strong>Phone:</strong> (646) 835-2654</p>
+      
+      <h3>Office Hours</h3>
+      <p>Monday - Friday: 8:00 AM - 6:00 PM<br>
+      Saturday: 9:00 AM - 2:00 PM<br>
+      Sunday: Closed</p>
+      
+      <h3>Accepted Insurance</h3>
+      <p>Most major insurance plans accepted. Please call to verify your coverage.</p>
+    </div>
+  </section>
+  <section class="tab-content" id="reviews-tab">
+    <div class="container">
+      <h3>Patient Reviews (272 total)</h3>
+  
+      <div class="rating-distribution">
+        <p><strong>Rating Distribution:</strong></p>
+        
+        <div class="rating-row">
+          <div class="rating-label">5 star</div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 68%;"></div>
+          </div>
+          <div class="rating-count">90 reviews</div>
+        </div>
+  
+        <div class="rating-row">
+          <div class="rating-label">4 star</div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 22%;"></div>
+          </div>
+          <div class="rating-count">11 reviews</div>
+        </div>
+  
+        <div class="rating-row">
+          <div class="rating-label">3 star</div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 7%;"></div>
+          </div>
+          <div class="rating-count">8 reviews</div>
+        </div>
+  
+        <div class="rating-row">
+          <div class="rating-label">2 star</div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 2%;"></div>
+          </div>
+          <div class="rating-count">4 reviews</div>
+        </div>
+  
+        <div class="rating-row">
+          <div class="rating-label">1 star</div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 1%;"></div>
+          </div>
+          <div class="rating-count">2 reviews</div>
+        </div>
+      </div>
+      
+      <!-- Review List -->
+      <div id="review-list">
+        <div class="review-item">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" class="review-avatar" alt="Sarah M." />
+          <div class="review-content">
+            <p><strong>★★★★★</strong> "Excellent doctor who really listens to her patients. Very thorough and professional."</p>
+            <small>- Sarah M. • March 12, 2025</small>
+          </div>
+        </div>
+  
+        <div class="review-item">
+          <img src="https://randomuser.me/api/portraits/men/35.jpg" class="review-avatar" alt="Michael R." />
+          <div class="review-content">
+            <p><strong>★★★★★</strong> "Dr. Lee was fantastic. She explained everything clearly and made me feel comfortable throughout the procedure."</p>
+            <small>- Michael R. • March 8, 2025</small>
+          </div>
+        </div>
+  
+        <div class="review-item">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" class="review-avatar" alt="Jennifer L." />
+          <div class="review-content">
+            <p><strong>★★★★☆</strong> "Great experience overall. Office staff was friendly and Dr. Lee was very knowledgeable."</p>
+            <small>- Jennifer L. • February 28, 2025</small>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Write a Review Button -->
+      <button id="toggle-review-form" class="write-review-btn">Write a Review</button>
+  
+      <!-- Modal Backdrop & Form -->
+      <!-- Modal Backdrop & Form -->
+<div id="review-modal" class="modal-backdrop">
+  <div class="modal-content">
+    <span class="modal-close" id="close-review-modal">&times;</span>
+    <h3>Add Your Review</h3>
+    <form id="review-form">
+      <input type="text" id="first-name" placeholder="First Name" required />
+      <input type="text" id="last-name" placeholder="Last Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <select id="rating" required>
+        <option value="">Select Rating</option>
+        <option value="★★★★★">5 Stars</option>
+        <option value="★★★★☆">4 Stars</option>
+        <option value="★★★☆☆">3 Stars</option>
+        <option value="★★☆☆☆">2 Stars</option>
+        <option value="★☆☆☆☆">1 Star</option>
+      </select>
+      <textarea id="comment" placeholder="Write your review here..." required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+  </div>
+</div>
+  
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer style="background-color: #f8f9fa; border-top: 1px solid #dee2e6; padding: 2rem 0; margin-top: 3rem;">
+    <div class="container">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <!-- Department Logo -->
+        <div style="flex-shrink: 0;">
+          <img src="https://cryptoriq.com/1/department.png" alt="Department Logo" style="width: 80px; height: 80px; object-fit: contain;" />
+        </div>
+        
+        <!-- Footer Text -->
+        <div style="color: #666; line-height: 1.4; flex: 1; font-size: clamp(12px, 3vw, 14px);">
+          <div style="margin-bottom: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <strong>A federal government website managed by the</strong>
+          </div>
+          <div style="margin-bottom: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <a href="#" style="color: #0066cc; text-decoration: none;">U.S. Centers for Medicare & Medicaid Services</a>
+          </div>
+          <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            7500 Security Boulevard, Baltimore, MD 21244
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

